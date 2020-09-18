@@ -1,6 +1,7 @@
 <?php
 
-// TODO: implement login check
+// Login check
+include('loginCheck.php');
 
 $imgPath = __DIR__ . '/' . $_GET['image'];
 $filename = basename($imgPath);

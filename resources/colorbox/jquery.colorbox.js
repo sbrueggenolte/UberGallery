@@ -58,12 +58,12 @@
 			retinaSuffix: '@2x.$1',
 
 			// internationalization
-			current: "image {current} of {total}",
-			previous: "previous",
-			next: "next",
-			close: "close",
-			xhrError: "This content failed to load.",
-			imgError: "This image failed to load.",
+			current: "Bild {current} von {total}",
+			previous: "Zurück",
+			next: "Vor",
+			close: "Schließen",
+			xhrError: "Der Inhalt konnte nicht geladen werden. Noch eingeloggt?",
+			imgError: "Das Bild konnte nicht geladen werden. Noch eingeloggt?",
 
 			// accessbility
 			returnFocus: true,

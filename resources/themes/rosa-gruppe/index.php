@@ -1,3 +1,8 @@
+<?php
+if (!defined('THEMEPATH')) {
+    exit;
+}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
@@ -22,15 +27,22 @@
 </head>
 
 <body>
-
     <div class="container">
 
-        <div class="navbar navbar-inverse">
+        <div class="navbar <!--navbar-inverse-->">
+
             <div class="navbar-inner">
                 <div class="container">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleGalleryList" aria-controls="navbarToggleGalleryList" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <div class="brand">Rosa Gruppe - Kindergarten Dünenweg</div>
+                    <form method="post" action="/">
+                        <input type="hidden" name="logout" value="logout" />
+                        <button type="submit">Ausloggen</button>
+                    </form>
                 </div>
-                <div class="container">
+                <div class="container<?php if (!empty($galleryArray['images'])) { echo ' collapse'; } ?>" id="navbarToggleGalleryList">
                     <div class="brand">
                         Ordner:<br />
                         <ul>

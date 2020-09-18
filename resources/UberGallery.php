@@ -1280,7 +1280,7 @@ class UberGallery {
      * @return void
      * @access private
      */
-    private function _errorHandler($errorNum, $errorMsg, $fileName, $lineNum, $vars) {
+    public function _errorHandler($errorNum, $errorMsg, $fileName, $lineNum, $vars) {
 
         // Set current timestamp
         $time = date('Y-m-d H:i:s');

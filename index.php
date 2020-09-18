@@ -6,6 +6,14 @@
     // Initialize the UberGallery object
     $gallery = new UberGallery();
 
+    // Define theme path
+    if (!defined('THEMEPATH')) {
+        define('THEMEPATH', $gallery->getThemePath());
+    }
+
+    // Login check
+    include('loginCheck.php');
+
     // Initialize the gallery array
     $imageDirectory = '../gallery-images';
 
@@ -20,11 +28,6 @@
     $galleryArray = $gallery->readImageDirectory($imageDirectory);
 
     $zip = glob($imageDirectory . '/*.zip');
-
-// Define theme path
-    if (!defined('THEMEPATH')) {
-        define('THEMEPATH', $gallery->getThemePath());
-    }
 
     // Set path to theme index
     $themeIndex = $gallery->getThemePath(true) . '/index.php';

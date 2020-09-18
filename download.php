@@ -1,6 +1,7 @@
 <?php
 
-// TODO: implement login check
+// Login check
+include('loginCheck.php');
 
 $file = __DIR__ . '/' . $_GET['file'];
 $filename = basename($file);
