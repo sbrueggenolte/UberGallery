@@ -7,9 +7,21 @@
     $gallery = new UberGallery();
 
     // Initialize the gallery array
-    $galleryArray = $gallery->readImageDirectory('../gallery-images');
+    $imageDirectory = '../gallery-images';
 
-    // Define theme path
+    $galleries = array_map(static function($dir) use ($imageDirectory) {
+        return str_replace($imageDirectory . '/', '', $dir);
+    }, array_filter(glob($imageDirectory . '/*'), 'is_dir'));
+
+    if (isset($_GET['gallery']) && is_string($_GET['gallery']) && '' !== $_GET['gallery']) {
+        $imageDirectory .= '/' . str_replace('.', '', str_replace('/', '', $_GET['gallery']));
+    }
+
+    $galleryArray = $gallery->readImageDirectory($imageDirectory);
+
+    $zip = glob($imageDirectory . '/*.zip');
+
+// Define theme path
     if (!defined('THEMEPATH')) {
         define('THEMEPATH', $gallery->getThemePath());
     }

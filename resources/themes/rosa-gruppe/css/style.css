@@ -27,3 +27,9 @@ html, body {
     margin: 9px 0;
     text-align: center;
 }
+
+@media(min-width:1200px) {
+    .container {
+        width: 90%;
+    }
+}

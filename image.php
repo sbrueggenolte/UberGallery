@@ -1,5 +1,7 @@
 <?php
 
+// TODO: implement login check
+
 $imgPath = __DIR__ . '/' . $_GET['image'];
 $filename = basename($imgPath);
 $file_extension = strtolower(substr(strrchr($filename,"."),1));
