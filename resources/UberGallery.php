@@ -931,7 +931,7 @@ class UberGallery {
 
         // Create title element
         $paginatorArray[] = array(
-            'text'  => 'Page ' . $currentPage . ' of ' . $totalPages,
+            'text'  => 'Seite ' . $currentPage . ' von ' . $totalPages,
             'class' => 'title'
         );
 
@@ -948,7 +948,7 @@ class UberGallery {
             $paginatorArray[] = array(
                 'text'  => '&lt;',
                 'class' => 'active',
-                'href'  => '?page=' . ($currentPage - 1)
+                'href'  => $this->createUrlParameters($currentPage - 1)
             );
 
         }
@@ -957,8 +957,8 @@ class UberGallery {
         if ($firstPage > 1) {
             $paginatorArray[] = array(
                 'text'  => '...',
-                'class' => 'more',
-                'href'  => '?page=' . ($currentPage - $range - 1)
+                'class' => 'mehr',
+                'href'  => $this->createUrlParameters($currentPage - $range - 1)
             );
         }
 
@@ -977,7 +977,7 @@ class UberGallery {
                 $paginatorArray[] = array(
                     'text'  => $i,
                     'class' => 'active',
-                    'href'  => '?page=' . $i
+                    'href'  => $this->createUrlParameters($i)
                 );
 
             }
@@ -989,7 +989,7 @@ class UberGallery {
             $paginatorArray[] = array(
                 'text'  => '...',
                 'class' => 'more',
-                'href'  => '?page=' . ($currentPage + $range + 1)
+                'href'  => $this->createUrlParameters($currentPage + $range + 1)
             );
         }
 
@@ -1006,7 +1006,7 @@ class UberGallery {
             $paginatorArray[] = array(
                 'text'  => '&gt;',
                 'class' => 'active',
-                'href'  => '?page=' . ($currentPage + 1)
+                'href'  => $this->createUrlParameters($currentPage + 1)
             );
 
         }
@@ -1016,6 +1016,18 @@ class UberGallery {
 
     }
 
+    private function createUrlParameters($pageNumber)
+    {
+        $params = [];
+
+        if (isset($_GET['gallery']) && is_string($_GET['gallery']) && '' !== $_GET['gallery']) {
+            $params['gallery'] = $_GET['gallery'];
+        }
+
+        $params['page'] = $pageNumber;
+
+        return '?' . http_build_query($params);
+    }
 
     /**
      * Sorts an array by the provided sort method
