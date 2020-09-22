@@ -14,12 +14,10 @@ if (!defined('THEMEPATH')) {
     <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/nav.css" />
     <?php echo $gallery->getColorboxStyles(1); ?>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/nav.js"></script>
     <?php echo $gallery->getColorboxScripts(); ?>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,23 +27,17 @@ if (!defined('THEMEPATH')) {
 </head>
 
 <body>
-    <div class="overlay" onclick="closeNav()"></div>
     <div class="container">
 
         <div class="navbar <!--navbar-inverse-->">
 
             <div class="navbar-inner">
                 <div class="container">
-                    <!-- collapse button -->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleGalleryList" aria-controls="navbarToggleGalleryList" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <!-- off canvas button -->
-                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-                    <!-- title -->
                     <div class="brand">Rosa Gruppe - Kindergarten Dünenweg</div>
-                    <!-- logout button -->
-                    <form method="get" action="/">
+                    <form method="post" action="/">
                         <input type="hidden" name="logout" value="logout" />
                         <button type="submit">Ausloggen</button>
                     </form>
@@ -67,19 +59,6 @@ if (!defined('THEMEPATH')) {
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div id="rosaSidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <?php
-            foreach ($galleries as $galleryDir) {
-                $title = substr($galleryDir, 8,2) . '.'
-                    . substr($galleryDir, 5,2) . '.'
-                    . substr($galleryDir, 0,4) . '<br />'
-                    . substr($galleryDir, 11);
-                echo sprintf('<a href="?gallery=%s">%s</a>', \urlencode($galleryDir), $title);
-            }
-            ?>
         </div>
 
         <?php if($gallery->getSystemMessages()): ?>
