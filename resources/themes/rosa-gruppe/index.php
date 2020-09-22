@@ -33,38 +33,26 @@ if (!defined('THEMEPATH')) {
     <div class="container">
 
         <div class="navbar <!--navbar-inverse-->">
-
             <div class="navbar-inner">
                 <div class="container">
-                    <!-- collapse button -->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleGalleryList" aria-controls="navbarToggleGalleryList" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <img src="resources/themes/rosa-gruppe/img/duenenweg.png" id="icon" onclick="openNav()" alt="User Icon" width=100 style="float: left; margin: 10px; cursor:pointer;" />
                     <!-- off canvas button -->
-                    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+<!--                    <span style="font-size:24px;cursor:pointer;float: left;" onclick="openNav()" >&#9776; open</span>-->
                     <!-- title -->
-                    <div class="brand">Rosa Gruppe - Kindergarten Dünenweg</div>
-                    <!-- logout button -->
-                    <form method="get" action="/">
-                        <input type="hidden" name="logout" value="logout" />
-                        <button type="submit">Ausloggen</button>
-                    </form>
-                </div>
-                <div class="container<?php if (!empty($galleryArray['images'])) { echo ' collapse'; } ?>" id="navbarToggleGalleryList">
                     <div class="brand">
-                        Ordner:<br />
-                        <ul>
-                            <?php
-                            foreach ($galleries as $galleryDir) {
-                                $title = substr($galleryDir, 8,2) . '.'
-                                    . substr($galleryDir, 5,2) . '.'
-                                    . substr($galleryDir, 0,4) . ' '
-                                    . substr($galleryDir, 11);
-                                echo sprintf('<li><a href="?gallery=%s">%s</a></li>', \urlencode($galleryDir), $title);
-                            }
-                            ?>
-                        </ul>
+                        Rosa Gruppe - Kindergarten Dünenweg<br /><br /><br />
+                        <?php if ($_GET['gallery']) { echo $_GET['gallery']; } else { ?>
+                        &#9194; Auf das Logo klicken, um eine Gallerie zu wählen.
+                        <?php } ?>
                     </div>
+                    <!-- logout button -->
+                    <form name="logout-form" method="post" action="/" style="float: right">
+                        <input type="hidden" name="logout" value="logout" />
+                        <div id="logout-btn" style="text-align: center; cursor: pointer; position: relative; top: 29px; line-height: 1" onclick="document.forms['logout-form'].submit();">
+                            <span style="font-size: 50px;">&#8861;</span><br />
+                            <span style="font-size: 14px">Logout</span>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -160,7 +148,7 @@ if (!defined('THEMEPATH')) {
             </div>
         <?php endif; ?>
 
-        <p class="credit">Powered by <a href="http://www.ubergallery.net">UberGallery</a> and <a href="http://www.hascha.de">hascha.de</a></p>
+        <p class="credit">Powered by <a href="http://www.ubergallery.net">UberGallery</a>, modified by <a href="http://www.hascha.de">hascha.de</a></p>
 
     </div>
 
