@@ -15,7 +15,7 @@ if (!defined('THEMEPATH')) {
     <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/bootstrap-responsive.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/nav.css" />
-    <?php echo $gallery->getColorboxStyles(1); ?>
+    <?php echo $gallery->getColorboxStyles(2); ?>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/bootstrap.min.js"></script>
