@@ -21,6 +21,8 @@ if (!defined('THEMEPATH')) {
     <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/nav.js"></script>
     <?php echo $gallery->getColorboxScripts(); ?>
+    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/touchswipe/jquery.touchSwipe.js"></script>
+    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/touchswipe-integration/swipecontrols.js"></script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
