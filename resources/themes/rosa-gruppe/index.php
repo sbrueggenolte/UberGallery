@@ -53,7 +53,7 @@ if (!defined('THEMEPATH')) {
                                     . substr($galleryDir, 11);
                                 echo $title;
                             } else { ?>
-                                &#9194; Auf das Logo klicken, um eine Gallerie zu wählen.
+                                <!--&#9194;--> Auf das Logo klicken, um eine Gallerie zu wählen.
                             <?php } ?>
                         </div>
                     </div>
