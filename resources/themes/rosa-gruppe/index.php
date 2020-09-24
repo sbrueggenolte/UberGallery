@@ -117,11 +117,9 @@ if (!defined('THEMEPATH')) {
                     </li>
                 <?php endforeach; ?>
             </ul>
+            <hr/>
         <?php endif; ?>
         <!-- End UberGallery - Distributed under the MIT license: http://www.opensource.org/licenses/mit-license.php -->
-
-        <hr/>
-
 
         <?php if ($galleryArray['stats']['total_pages'] > 1): ?>
 

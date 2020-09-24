@@ -596,7 +596,7 @@ class UberGallery {
 
         // Set error message if there are no images
         if (empty($dirArray)) {
-            $this->setSystemMessage('error', "No images found, please upload images to your gallery's image directory.");
+            // $this->setSystemMessage('error', "No images found, please upload images to your gallery's image directory.");
         }
 
         // Sort the array

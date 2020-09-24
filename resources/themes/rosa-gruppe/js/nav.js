@@ -7,5 +7,5 @@ function openNav() {
 function closeNav() {
     $('.overlay').fadeOut();
     document.getElementById("rosaSidenav").style.width = "0";
-    document.body.style.backgroundColor = "white";
+    document.body.style.backgroundColor = "mistyrose";
 }

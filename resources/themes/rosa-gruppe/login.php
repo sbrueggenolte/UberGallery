@@ -42,7 +42,7 @@
 
                     <!-- Remind Passowrd -->
                     <div id="formFooter">
-                        <a class="underlineHover" href="mailto:sbrueggenolte@posteo.de">Passwort vergessen?</a>
+                        <a class="underlineHover" href="mailto:sbrueggenolte@posteo.de?subject=Hilfe, ich brauche ein neues Passwort">Passwort vergessen?</a>
                     </div>
 
                 </div>
