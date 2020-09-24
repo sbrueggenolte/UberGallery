@@ -37,24 +37,49 @@ if (!defined('THEMEPATH')) {
         <div class="navbar <!--navbar-inverse-->">
             <div class="navbar-inner">
                 <div class="container">
-                    <img src="resources/themes/rosa-gruppe/img/duenenweg.png" id="icon" onclick="openNav()" alt="User Icon" width=100 style="float: left; margin: 10px; cursor:pointer;" />
-                    <!-- off canvas button -->
-<!--                    <span style="font-size:24px;cursor:pointer;float: left;" onclick="openNav()" >&#9776; open</span>-->
-                    <!-- title -->
-                    <div class="brand">
-                        Rosa Gruppe - Kindergarten Dünenweg<br /><br /><br />
-                        <?php if ($_GET['gallery']) { echo $_GET['gallery']; } else { ?>
-                        &#9194; Auf das Logo klicken, um eine Gallerie zu wählen.
-                        <?php } ?>
+                    <div class="logo">
+                        <img src="resources/themes/rosa-gruppe/img/duenenweg.png" onclick="openNav()" alt="Kindergarden Icon" width=100  />
                     </div>
+                    <div class="brand">
+                        <span class="headline">
+                            Rosa Gruppe - Kindergarten Dünenweg
+                        </span>
+                        <div class="sub-headline">
+                            <?php if ($_GET['gallery']) {
+                                $galleryDir = $_GET['gallery'];
+                                $title = substr($galleryDir, 8,2) . '.'
+                                    . substr($galleryDir, 5,2) . '.'
+                                    . substr($galleryDir, 0,4) . ' '
+                                    . substr($galleryDir, 11);
+                                echo $title;
+                            } else { ?>
+                                &#9194; Auf das Logo klicken, um eine Gallerie zu wählen.
+                            <?php } ?>
+                        </div>
+                    </div>
+
+
                     <!-- logout button -->
                     <form name="logout-form" method="post" action="/" style="float: right">
                         <input type="hidden" name="logout" value="logout" />
                         <div id="logout-btn" style="text-align: center; cursor: pointer; position: relative; top: 29px; line-height: 1" onclick="document.forms['logout-form'].submit();">
-                            <span style="font-size: 50px;">&#8861;</span><br />
+                            <a href="#">
+                            <img src="resources/themes/rosa-gruppe/img/logout-btn.png" onclick="openNav()" alt="Logout Button" width=24 style="float: left; margin: 10px; cursor:pointer;" /><br />
                             <span style="font-size: 14px">Logout</span>
+                            </a>
                         </div>
                     </form>
+
+                    <?php if ($zip): ?>
+                        <div class="zip-container" style="float: right; text-align: center; cursor: pointer; position: relative; top: 42px; line-height: 1; margin-right: 25px;">
+                            <a href="download.php?file=<?php echo $zip[0]; ?>">
+                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-file-earmark-zip-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 7px;">
+                                    <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 2l.5-2.5 3 3L10 5a1 1 0 0 1-1-1zM5.5 3V2h-1V1H6v1h1v1H6v1h1v1H6v1h1v1H5.5V6h-1V5h1V4h-1V3h1zm0 4.5a1 1 0 0 0-1 1v.938l-.4 1.599a1 1 0 0 0 .416 1.074l.93.62a1 1 0 0 0 1.109 0l.93-.62a1 1 0 0 0 .415-1.074l-.4-1.599V8.5a1 1 0 0 0-1-1h-1zm0 1.938V8.5h1v.938a1 1 0 0 0 .03.243l.4 1.598-.93.62-.93-.62.4-1.598a1 1 0 0 0 .03-.243z"/>
+                                </svg><br />
+                                Gallerie herunterladen (ZIP)
+                            </a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -79,19 +104,6 @@ if (!defined('THEMEPATH')) {
                     <?php echo $message['text']; ?>
                 </div>
             <?php endforeach; ?>
-        <?php endif; ?>
-
-        <?php if ($zip): ?>
-            <div class="container">
-                <div class="brand">
-                    <a href="download.php?file=<?php echo $zip[0]; ?>">
-                        <svg width="5em" height="5em" viewBox="0 0 16 16" class="bi bi-file-earmark-zip-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7 2l.5-2.5 3 3L10 5a1 1 0 0 1-1-1zM5.5 3V2h-1V1H6v1h1v1H6v1h1v1H6v1h1v1H5.5V6h-1V5h1V4h-1V3h1zm0 4.5a1 1 0 0 0-1 1v.938l-.4 1.599a1 1 0 0 0 .416 1.074l.93.62a1 1 0 0 0 1.109 0l.93-.62a1 1 0 0 0 .415-1.074l-.4-1.599V8.5a1 1 0 0 0-1-1h-1zm0 1.938V8.5h1v.938a1 1 0 0 0 .03.243l.4 1.598-.93.62-.93-.62.4-1.598a1 1 0 0 0 .03-.243z"/>
-                        </svg>
-                        Alle Bilder als ZIP-Datei herunterladen
-                    </a>
-                </div>
-            </div>
         <?php endif; ?>
 
         <!-- Start UberGallery v<?php echo UberGallery::VERSION; ?> - Copyright (c) <?php echo date('Y'); ?> Chris Kankiewicz (http://www.ChrisKankiewicz.com) -->

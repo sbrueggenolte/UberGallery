@@ -1,5 +1,5 @@
 html, body {
-    background-color: lightgrey;
+    background-color: mistyrose;
 }
 
 .navbar {
@@ -8,6 +8,20 @@ html, body {
 
 .navbar-inverse .brand {
     color: #FFF;
+}
+
+.logo img {
+    float: left;
+    margin: 10px;
+    cursor:pointer;
+}
+
+.brand {
+    margin-top: 13px;
+}
+
+.sub-headline {
+    margin-top: 34px;
 }
 
 .gallery-wrapper {
@@ -30,6 +44,38 @@ html, body {
 
 @media(min-width:1200px) {
     .container {
-        width: 90%;
+        /*width: 90%;*/
+    }
+}
+
+@media(max-width: 979px) {
+    .headline {
+        display: none !important;
+    }
+
+    .logo {
+        text-align: center;
+    }
+    .logo img {
+        margin-top: 10px;
+        float: none;
+    }
+
+    .sub-headline {
+        margin: 0;
+        text-align: center;
+    }
+
+    .zip-container {
+        top: 0 !important;
+        margin-right: 75px !important;
+    }
+
+    form[name="logout-form"] {
+        margin-top: -41px;
+    }
+
+    .navbar-inner {
+        padding-bottom: 20px;
     }
 }
