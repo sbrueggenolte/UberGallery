@@ -33,9 +33,15 @@
                         <img src="resources/themes/rosa-gruppe/img/duenenweg.png" id="icon" alt="User Icon" />
                     </div>
 
+                    <h2 class="fadeIn first" >Rosa Gruppe</h2>
+
+                    <div id="locked-message">
+                        Wegen zu vieler Fehlversuche wurde der Account gesperrt.<br />
+                        Du kannst es in <span id="locked-minutes"></span> Minuten noch einmal probieren.
+                    </div>
+
                     <!-- Login Form -->
                     <form method="post" id="login-form" action="/">
-                        <h2 class="fadeIn first" >Rosa Gruppe</h2>
                         <input type="text" id="email" class="fadeIn first" name="email" placeholder="E-Mail-Adresse" autocomplete="username email">
                         <input type="password" id="password" class="fadeIn first" name="password" placeholder="Password" autocomplete="current-password">
                         <input type="submit" class="fadeIn first" value="Los geht's">

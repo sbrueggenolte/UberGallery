@@ -3,7 +3,7 @@ session_start();
 
 // load valid logins
 $logins    = [];
-$loginRows = explode("\n", file_get_contents('../logins'));
+$loginRows = explode("\n", file_get_contents(__DIR__ . '/../logins'));
 foreach ($loginRows as $loginRow) {
     $loginData      = explode(";", $loginRow);
     $email          = strtolower(trim($loginData[0]));
@@ -71,27 +71,56 @@ if (!$_SESSION['login']) {
 
     // try to login
     if ($_POST['email'] && $_POST['password']) {
-            $email = strtolower(trim($_POST['email']));
-            $pw    = $_POST['password'];
-            $hash = md5($secret1 . $pw . $secret2);
+        http_response_code(401);
+        $email = strtolower(trim($_POST['email']));
+        $pw    = $_POST['password'];
+        $hash  = md5($secret1 . $pw . $secret2);
+        $now   = (new DateTime())->getTimestamp();
 
-            if (isset($logins[$email]) && $hash === md5($secret1 . $logins[$email] . $secret2)) {
-                $_SESSION['login'] = [
-                    'email' => $email,
-                    'hash'  => $hash
-                ];
+        $failedLoginFile = __DIR__ . '/../failed_logins/' . str_replace('@', '_at_', $email);
+        if (is_file($failedLoginFile)) {
+            $failedLogins             = explode("\n", file_get_contents($failedLoginFile));
+            array_pop($failedLogins);
+            $lastFailedLogin          = end($failedLogins);
+            $timeSinceLastFailedLogin = $now - $lastFailedLogin;
+            $lockedUntil              = 0;
+            $failedLoginCount         = count($failedLogins);
 
-                // Set Cookie expiration for 1 month
-                $cookie_expiration_time = time() + (30 * 24 * 60 * 60);  // for 1 month
-                // Set Cookies
-                setcookie("email", $email, $cookie_expiration_time);
-                setcookie("login_hash", $hash, $cookie_expiration_time);
-
-                return;
+            for ($i = 20; $i > 0; $i--) {
+                $lockTime = $i * 300;
+                if ($now - $lastFailedLogin < $lockTime && $i * 5 <= $failedLoginCount) {
+                    $lockedUntil = $lastFailedLogin + $lockTime;
+                    break;
+                }
             }
 
-            http_response_code(401);
+            if ($lockedUntil > 0) {
+                http_response_code(423);
+                echo ceil(($lockedUntil - $now) / 60);
+                return;
+            }
+        }
+
+        if (isset($logins[$email]) && $hash === md5($secret1 . $logins[$email] . $secret2)) {
+            $_SESSION['login'] = [
+                'email' => $email,
+                'hash'  => $hash
+            ];
+
+            // Set Cookie expiration for 1 month
+            $cookie_expiration_time = time() + (30 * 24 * 60 * 60);  // for 1 month
+            // Set Cookies
+            setcookie("email", $email, $cookie_expiration_time);
+            setcookie("login_hash", $hash, $cookie_expiration_time);
+
+            file_put_contents($failedLoginFile, '');
+            http_response_code(200);
             return;
+        }
+
+
+        file_put_contents($failedLoginFile, $now . "\n", FILE_APPEND);
+        return;
     }
 
     // show login form

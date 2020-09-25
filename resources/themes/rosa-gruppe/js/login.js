@@ -1,30 +1,38 @@
 $(document).on('submit', '#login-form',  function(e) {
 
-    // fetch('/loginCheck.php', {
-    //     method: 'POST',
-    //     body: new FormData(e.target),
-    //     credentials: 'include'
-    // });
-
-    // $.post('/loginCheck.php', {
-    //     'password': $('#password').val(),
-    //     'email': $('#email').val()
-    // }, function(response) {
-    //     if (window.PasswordCredential) {
-    //         var c = new PasswordCredential(e.target);
-    //         console.log(c);
-    //         return navigator.credentials.store(c);
-    //     } else {
-    //         console.log('weißbnich');
-    //         return Promise.resolve(profile);
-    //     }
-    // });
-
-
     // Stop submitting form by itself
     e.preventDefault();
 
     $('#formContent').removeClass('shake-effect');
+
+
+    $.post('/loginCheck.php', {
+        'password': $('#password').val(),
+        'email': $('#email').val()
+    }, function(response) {
+        $('#locked-message').slideUp();
+        if (window.PasswordCredential) {
+            var c = new PasswordCredential(e.target);
+            return navigator.credentials.store(c);
+        } else {
+            return Promise.resolve(profile);
+        }
+        window.location.replace('/');
+    }).fail(function(response) {
+        if (423 === response.status) {
+            $('#locked-minutes').html(response.responseText);
+            $('#locked-message').slideDown();
+            return;
+        }
+
+        $('#locked-message').slideUp();
+        $('#formContent').addClass('shake-effect');
+    });
+
+
+
+
+/*
 
     // Try sign-in with AJAX
     fetch('/loginCheck.php', {
@@ -44,25 +52,24 @@ $(document).on('submit', '#login-form',  function(e) {
                 id: $('#email').val(),
                 password: $('#password').val(),
                 name: 'Fotos Rosa Gruppe',
-                iconURL: 'https://rosa.dev.localhost.de'
+                iconURL: 'https://rosa.hascha.de'
             });
 
-            console.log(c);
             var result = navigator.credentials.store(c);
-            console.log(result);
             return result;
         } else {
             return Promise.resolve(profile);
         }
     }).then(profile => {
 
-        console.log(profile);
+        // console.log(profile);
         // Successful sign-in
         // if (profile) {
-            window.location.replace('/');
+        //     window.location.replace('/');
         // }
     }).catch(error => {
         $('#formContent').addClass('shake-effect');
     });
+*/
 
 });
