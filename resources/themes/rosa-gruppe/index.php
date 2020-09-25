@@ -17,12 +17,13 @@ if (!defined('THEMEPATH')) {
     <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/nav.css" />
     <?php echo $gallery->getColorboxStyles(2); ?>
 
-    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/nav.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js?202009251033"></script>
+    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/bootstrap.min.js?202009251033"></script>
+    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/nav.js?202009251036"></script>
+    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/login.js?202009251042"></script>
     <?php echo $gallery->getColorboxScripts(); ?>
-    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/touchswipe/jquery.touchSwipe.js"></script>
-    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/touchswipe-integration/swipecontrols.js"></script>
+    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/touchswipe/jquery.touchSwipe.js?202009251033"></script>
+    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/touchswipe-integration/swipecontrols.js?202009251033"></script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,11 +61,11 @@ if (!defined('THEMEPATH')) {
 
 
                     <!-- logout button -->
-                    <form name="logout-form" method="post" action="/" style="float: right">
+                    <form name="logout-form" method="get" action="/" style="float: right">
                         <input type="hidden" name="logout" value="logout" />
                         <div id="logout-btn" style="text-align: center; cursor: pointer; position: relative; top: 29px; line-height: 1" onclick="document.forms['logout-form'].submit();">
                             <a href="#">
-                            <img src="resources/themes/rosa-gruppe/img/logout-btn.png" onclick="openNav()" alt="Logout Button" width=24 style="float: left; margin: 10px; cursor:pointer;" /><br />
+                            <img src="resources/themes/rosa-gruppe/img/logout-btn.png" alt="Logout Button" width=24 style="float: left; margin: 10px; cursor:pointer;" /><br />
                             <span style="font-size: 14px">Logout</span>
                             </a>
                         </div>

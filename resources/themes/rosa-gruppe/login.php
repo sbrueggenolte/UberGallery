@@ -11,6 +11,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/login.js?202009251045"></script>
 
         <link rel="stylesheet" type="text/css" href="<?php echo THEMEPATH; ?>/css/login-style.css" />
 
@@ -33,11 +34,11 @@
                     </div>
 
                     <!-- Login Form -->
-                    <form method="post" action="/">
-                        <h2>Rosa Gruppe</h2>
-                        <input type="text" id="login" class="fadeIn second" name="login" placeholder="E-Mail-Adresse">
-                        <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password">
-                        <input type="submit" class="fadeIn fourth" value="Los geht's">
+                    <form method="post" id="login-form" action="/">
+                        <h2 class="fadeIn first" >Rosa Gruppe</h2>
+                        <input type="text" id="email" class="fadeIn first" name="email" placeholder="E-Mail-Adresse" autocomplete="username email">
+                        <input type="password" id="password" class="fadeIn first" name="password" placeholder="Password" autocomplete="current-password">
+                        <input type="submit" class="fadeIn first" value="Los geht's">
                     </form>
 
                     <!-- Remind Passowrd -->
