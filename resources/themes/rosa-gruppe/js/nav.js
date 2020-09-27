@@ -29,3 +29,8 @@ $(document).keyup(function(e) {
         $('#cboxClose').click();
     }
 });
+
+
+/*
+ $.colorbox.resize({width:"100%" , height:"100%"});
+ */
