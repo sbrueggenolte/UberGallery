@@ -87,7 +87,7 @@ if (!$_SESSION['login']) {
             $failedLoginCount         = count($failedLogins);
 
             for ($i = 20; $i > 0; $i--) {
-                $lockTime = $i * 300;
+                $lockTime = $i * $i * 60;
                 if ($now - $lastFailedLogin < $lockTime && $i * 5 <= $failedLoginCount) {
                     $lockedUntil = $lastFailedLogin + $lockTime;
                     break;
