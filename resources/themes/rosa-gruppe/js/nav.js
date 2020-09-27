@@ -23,3 +23,9 @@ function locationHashChanged() {
 }
 
 window.onhashchange = locationHashChanged;
+
+$(document).keyup(function(e) {
+    if (e.code === 27) {
+        $('#cboxClose').click();
+    }
+});
