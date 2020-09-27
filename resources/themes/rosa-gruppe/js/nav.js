@@ -9,3 +9,17 @@ function closeNav() {
     document.getElementById("rosaSidenav").style.width = "0";
     // document.body.style.backgroundColor = "mistyrose";
 }
+
+$(document).bind('cbox_open', function() {
+    if (window.location.hash !== "#gallery_opened") {
+        window.location.hash = "gallery_opened";
+    }
+});
+
+function locationHashChanged() {
+    if (window.location.hash !== "#gallery_opened" && 'block' === $('#colorbox').css('display')) {
+        $('#cboxClose').click();
+    }
+}
+
+window.onhashchange = locationHashChanged;

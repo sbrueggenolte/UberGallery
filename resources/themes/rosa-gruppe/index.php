@@ -19,7 +19,7 @@ if (!defined('THEMEPATH')) {
 
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js?202009251033"></script>
     <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/bootstrap.min.js?202009251033"></script>
-    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/nav.js?202009251036"></script>
+    <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/nav.js?202009272144"></script>
     <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/login.js?202009251042"></script>
     <?php echo $gallery->getColorboxScripts(); ?>
     <script type="text/javascript" src="<?php echo THEMEPATH; ?>/js/touchswipe/jquery.touchSwipe.js?202009251033"></script>
