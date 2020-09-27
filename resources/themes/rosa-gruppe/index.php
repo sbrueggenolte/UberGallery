@@ -161,7 +161,7 @@ if (!defined('THEMEPATH')) {
             </div>
         <?php endif; ?>
 
-        <p class="credit">Powered by <a href="http://www.ubergallery.net">UberGallery</a>, modified by <a href="http://www.hascha.de">hascha.de</a></p>
+        <p class="credit">Powered by <a target="_blank" href="http://www.ubergallery.net">UberGallery</a>, modified by <a href="http://www.hascha.de">hascha.de</a></p>
 
     </div>
 
