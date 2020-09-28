@@ -6,9 +6,10 @@ $logins    = [];
 $loginRows = explode("\n", file_get_contents(__DIR__ . '/../logins'));
 foreach ($loginRows as $loginRow) {
     $loginData      = explode(";", $loginRow);
-    $email          = strtolower(trim($loginData[0]));
-    $logins[$email] = $loginData[1];
+    $email          = strtolower(trim($loginData[2]));
+    $logins[$email] = trim($loginData[3]);
 }
+
 
 function simulateSessionTimeout() {
     //Ending a php session after 30 minutes of inactivity
