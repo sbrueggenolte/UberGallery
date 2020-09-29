@@ -699,20 +699,65 @@ class UberGallery {
         if ($imgInfo[2] == IMAGETYPE_JPEG) {
             $image = imagecreatefromjpeg($source);
             imagecopyresampled($newImage, $image, 0, 0, $x, $y, $thumbWidth, $thumbHeight, $width, $height);
+            $newImage = $this->handleOrientation($newImage, $source);
             imagejpeg($newImage, $destination, $quality);
         } elseif ($imgInfo[2] == IMAGETYPE_GIF) {
             $image = imagecreatefromgif($source);
             imagecopyresampled($newImage, $image, 0, 0, $x, $y, $thumbWidth, $thumbHeight, $width, $height);
+            $newImage = $this->handleOrientation($newImage, $source);
             imagegif($newImage, $destination);
         } elseif ($imgInfo[2] == IMAGETYPE_PNG) {
             $image = imagecreatefrompng($source);
             imagecopyresampled($newImage, $image, 0, 0, $x, $y, $thumbWidth, $thumbHeight, $width, $height);
+            $newImage = $this->handleOrientation($newImage, $source);
             imagepng($newImage, $destination);
         }
 
         // Return relative path to thumbnail
         $relativePath = $this->_rThumbsDir . '/' . $fileName;
+
         return $relativePath;
+    }
+
+    private function handleOrientation($imageObject, $source)
+    {
+        if (!function_exists('exif_read_data')) {
+            return $imageObject;
+        }
+
+        $exif = \exif_read_data($source);
+
+        # Get orientation
+        $orientation = $exif['Orientation'];
+
+        # Manipulate image
+        switch ($orientation) {
+            case 2:
+                imageflip($imageObject, IMG_FLIP_HORIZONTAL);
+                break;
+            case 3:
+                $imageObject = imagerotate($imageObject, 180, 0);
+                break;
+            case 4:
+                imageflip($imageObject, IMG_FLIP_VERTICAL);
+                break;
+            case 5:
+                $imageObject = imagerotate($imageObject, -90, 0);
+                imageflip($imageObject, IMG_FLIP_HORIZONTAL);
+                break;
+            case 6:
+                $imageObject = imagerotate($imageObject, -90, 0);
+                break;
+            case 7:
+                $imageObject = imagerotate($imageObject, 90, 0);
+                imageflip($imageObject, IMG_FLIP_HORIZONTAL);
+                break;
+            case 8:
+                $imageObject = imagerotate($imageObject, 90, 0);
+                break;
+        }
+
+        return $imageObject;
     }
 
     /**
